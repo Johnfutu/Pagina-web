@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Portfolio Antes y Después | Montillas Holding</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="topbar">
+    <div class="container topbar__inner">
+      <a class="topbar__item topbar__location" href="https://www.google.com/search?q=Camino+de+leganes+30+28021+madrid&sca_esv=cbcc352c89b9e229&sxsrf=ANbL-n5c_NSzzk76RBEaJcWizUqShN1Xgw%3A1768413467659&source=hp&ei=G9lnae7aJefqi-gPotrE0A0&iflsig=AFdpzrgAAAAAaWfnK-DheQ_xtLJL1T8sezTkEkyPg99s&ved=0ahUKEwiu1LbEzYuSAxVn9QIHHSItEdoQ4dUDCCA&uact=5&oq=Camino+de+leganes+30+28021+madrid&gs_lp=Egdnd3Mtd2l6IiFDYW1pbm8gZGUgbGVnYW5lcyAzMCAyODAyMSBtYWRyaWQyAhAmMggQABiABBiiBDIFEAAY7wUyCBAAGIAEGKIEMgUQABjvBTIFEAAY7wVIimBQAFiLX3ANeACQAQGYAYYCoAGVKKoBBjguMzMuM7gBA8gBAPgBAZgCOKAClSjCAgoQIxiABBgnGIoFwgIEECMYJ8ICCBAAGIAEGLEDwgILEC4YgAQYsQMYgwHCAhEQLhiABBixAxjRAxiDARjHAcICCxAAGIAEGLEDGIMBwgIOEC4YgAQYsQMYgwEYigXCAgUQABiABMICBBAAGAPCAg4QABiABBixAxiDARiKBcICERAAGIAEGLEDGIMBGIoFGI0GwgIIEC4YgAQYsQPCAgUQLhiABMICDhAuGIAEGMcBGI4FGK8BwgILEAAYgAQYsQMYyQPCAgYQABgWGB7CAgUQIRigAcICBBAhGBWYAwCSBwcxOS4zNS4yoAeDlgKyBwY2LjM1LjK4B-InwgcJMy4zMC4yMi4xyAerAYAIAA&sclient=gws-wiz#smwie=1" target="_blank" rel="noreferrer">📍Madrid</a>
+      <a class="topbar__item" href="tel:+34642584490">📞 642 58 44 90</a>
+      <a class="topbar__item" href="mailto:montillasholding@gmail.com">✉️ montillasholding@gmail.com</a>
+      <a class="topbar__item topbar__wa" href="https://wa.me/34642584490" target="_blank" rel="noreferrer">💬 WhatsApp</a>
+    </div>
+  </div>
+
+  <header class="header">
+    <div class="container header__inner">
+      <a class="brand" href="index.html" aria-label="Inicio">
+        <img class="brand__logo" src="Assets/LOGO-SECUNDARIO-3.png" alt="Logo" />
+      </a>
+
+      <nav class="nav" aria-label="Principal">
+        <button class="nav__toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+
+        <ul class="nav__list" id="navList">
+          <li><a href="Integrales.html">Integrales</a></li>
+          <li><a href="cocinas.html">Cocinas</a></li>
+          <li><a href="banos.html">Baños</a></li>
+          <li><a href="Portafolio.html" aria-current="page">Portfolio</a></li>
+          <li><a class="btn btn--sm btn--outline" href="index.html#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container">
+        <div class="section__head">
+          <h1>Antes y Después</h1>
+          <p class="muted">Filtra por tipo y desliza para ver el cambio.</p>
+        </div>
+
+        <!-- filtros -->
+        <div class="filters" role="tablist" aria-label="Filtros de proyectos">
+          <button class="chip" data-filter="integral" role="tab">Integrales</button>
+          <button class="chip" data-filter="cocina" role="tab">Cocinas</button>
+          <button class="chip" data-filter="bano" role="tab">Baños</button>
+        </div>
+
+        <!-- grid de before/after -->
+        <div class="ba-grid" id="baGrid">
+          <!-- Proyecto 1 -->
+          <article class="card ba-card" data-type="integral">
+            <div class="ba-head">
+              <h3>Reforma integral - Salón</h3>
+              <span class="muted">Madrid</span>
+            </div>
+
+            <div class="before-after" data-ba>
+              <img class="ba__img ba__after" src="https://images.unsplash.com/photo-1560448204-603b3fc33ddc?auto=format&fit=crop&w=1600&q=70" alt="Después - salón reformado">
+              <div class="ba__beforeWrap" data-beforewrap>
+                <img class="ba__img ba__before" src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1600&q=70" alt="Antes - salón">
+              </div>
+
+              <div class="ba__labels">
+                <span class="ba__tag">ANTES</span>
+                <span class="ba__tag">DESPUÉS</span>
+              </div>
+
+              <input class="ba__range" type="range" min="0" max="100" value="50" aria-label="Control antes y después" data-range>
+              <div class="ba__handle" data-handle aria-hidden="true"></div>
+            </div>
+
+            <p class="muted">
+              Redistribución, suelo continuo, iluminación y pintura.
+            </p>
+          </article>
+
+          <!-- Proyecto 2 -->
+          <article class="card ba-card" data-type="cocina">
+            <div class="ba-head">
+              <h3>Reforma de cocina - Abierta</h3>
+              <span class="muted">Madrid</span>
+            </div>
+
+            <div class="before-after" data-ba>
+              <img class="ba__img ba__after" src="https://images.unsplash.com/photo-1600489000022-c2086d79f9d4?auto=format&fit=crop&w=1600&q=70" alt="Después - cocina">
+              <div class="ba__beforeWrap" data-beforewrap>
+                <img class="ba__img ba__before" src="https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?auto=format&fit=crop&w=1600&q=70" alt="Antes - cocina">
+              </div>
+
+              <div class="ba__labels">
+                <span class="ba__tag">ANTES</span>
+                <span class="ba__tag">DESPUÉS</span>
+              </div>
+
+              <input class="ba__range" type="range" min="0" max="100" value="50" aria-label="Control antes y después" data-range>
+              <div class="ba__handle" data-handle aria-hidden="true"></div>
+            </div>
+
+            <p class="muted">
+              Muebles a medida, encimera, puntos de luz y distribución.
+            </p>
+          </article>
+
+          <!-- Proyecto 3 -->
+          <article class="card ba-card" data-type="bano">
+            <div class="ba-head">
+              <h3>Reforma de baño - Ducha</h3>
+              <span class="muted">Madrid</span>
+            </div>
+
+            <div class="before-after" data-ba>
+              <img class="ba__img ba__after" src="https://images.unsplash.com/photo-1586798271654-0471bb2b0517?auto=format&fit=crop&w=1600&q=70" alt="Después - baño">
+              <div class="ba__beforeWrap" data-beforewrap>
+                <img class="ba__img ba__before" src="https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1600&q=70" alt="Antes - baño">
+              </div>
+
+              <div class="ba__labels">
+                <span class="ba__tag">ANTES</span>
+                <span class="ba__tag">DESPUÉS</span>
+              </div>
+
+              <input class="ba__range" type="range" min="0" max="100" value="50" aria-label="Control antes y después" data-range>
+              <div class="ba__handle" data-handle aria-hidden="true"></div>
+            </div>
+
+            <p class="muted">
+              Plato antideslizante, mampara, alicatado y grifería.
+            </p>
+          </article>
+        </div>
+
+        <div style="margin-top:18px;">
+          <a class="btn btn--primary" href="index.html#contacto">Quiero mi presupuesto</a>
+          <a class="btn btn--outline" href="https://wa.me/34642584490" target="_blank" rel="noreferrer">WhatsApp</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <img class="footer__logo" src="Assets/LOGO-SECUNDARIO-3.png" alt="Logo" />
+        <div>
+          <strong>Montillas Holding</strong>
+          <p class="muted">Reformas integrales · Cocinas · Baños</p>
+        </div>
+      </div>
+      <p class="footer__copy muted">© <span id="year"></span> Montillas Holding.</p>
+    </div>
+  </footer>
+
+  <a class="fab" href="https://wa.me/34642584490" target="_blank" rel="noreferrer" aria-label="Abrir WhatsApp">💬</a>
+  <script src="main.js"></script>
+</body>
+</html>

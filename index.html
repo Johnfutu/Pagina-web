@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Empresa de reformas | Presupuesto gratis</title>
+  <meta name="description" content="Reformas sin sorpresas: presupuesto y plazos por escrito. Pide tu presupuesto gratis." />
+
+  <!-- Google Font (CAMBIA "Poppins" por vuestra fuente si es otra) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="container topbar__inner">
+        <a class="topbar__item topbar__location" href="https://www.google.com/search?q=Camino+de+leganes+30+28021+madrid&sca_esv=cbcc352c89b9e229&sxsrf=ANbL-n5c_NSzzk76RBEaJcWizUqShN1Xgw%3A1768413467659&source=hp&ei=G9lnae7aJefqi-gPotrE0A0&iflsig=AFdpzrgAAAAAaWfnK-DheQ_xtLJL1T8sezTkEkyPg99s&ved=0ahUKEwiu1LbEzYuSAxVn9QIHHSItEdoQ4dUDCCA&uact=5&oq=Camino+de+leganes+30+28021+madrid&gs_lp=Egdnd3Mtd2l6IiFDYW1pbm8gZGUgbGVnYW5lcyAzMCAyODAyMSBtYWRyaWQyAhAmMggQABiABBiiBDIFEAAY7wUyCBAAGIAEGKIEMgUQABjvBTIFEAAY7wVIimBQAFiLX3ANeACQAQGYAYYCoAGVKKoBBjguMzMuM7gBA8gBAPgBAZgCOKAClSjCAgoQIxiABBgnGIoFwgIEECMYJ8ICCBAAGIAEGLEDwgILEC4YgAQYsQMYgwHCAhEQLhiABBixAxjRAxiDARjHAcICCxAAGIAEGLEDGIMBwgIOEC4YgAQYsQMYgwEYigXCAgUQABiABMICBBAAGAPCAg4QABiABBixAxiDARiKBcICERAAGIAEGLEDGIMBGIoFGI0GwgIIEC4YgAQYsQPCAgUQLhiABMICDhAuGIAEGMcBGI4FGK8BwgILEAAYgAQYsQMYyQPCAgYQABgWGB7CAgUQIRigAcICBBAhGBWYAwCSBwcxOS4zNS4yoAeDlgKyBwY2LjM1LjK4B-InwgcJMy4zMC4yMi4xyAerAYAIAA&sclient=gws-wiz#smwie=1" target="_blank" rel="noreferrer">📍Madrid</a>
+      <a class="topbar__item" href="tel:+34642584490">📞 642 58 44 90</a>
+      <a class="topbar__item" href="mailto:montillasholding@gmail.com">✉️ montillasholding@gmail.com</a>
+      <a class="topbar__item topbar__wa" href="https://wa.me/34642584490" target="_blank" rel="noreferrer">💬 WhatsApp</a>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="header" id="inicio">
+    <div class="container header__inner">
+      <a class="brand" href="#inicio" aria-label="Inicio">
+        <img class="brand__logo" src="Assets/LOGO-SECUNDARIO-3.png" alt="Logo de la empresa" />
+      </a>
+
+      <nav class="nav" aria-label="Principal">
+        <button class="nav__toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+
+        <ul class="nav__list" id="navList">
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#trabajos">Trabajos</a></li>
+          <li><a href="#faq">Preguntas</a></li>
+          <li><a class="btn btn--sm btn--outline" href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <main>
+    <section class="hero">
+      <div class="hero__bg" aria-hidden="true"></div>
+
+      <div class="container hero__inner">
+        <div class="hero__copy">
+          <h1>¿Listo para tu reforma sin sorpresas?</h1>
+
+          <ul class="hero__bullets">
+            <li>Sin sobrecostes ni retrasos</li>
+            <li>Presupuesto y plazos por escrito</li>
+            <li>Garantía firmada por contrato</li>
+          </ul>
+
+          <div class="hero__cta">
+            <a class="btn btn--primary" href="#contacto">Pide tu presupuesto gratis</a>
+            <a class="btn btn--wa" href="https://wa.me/34642584490" target="_blank" rel="noreferrer">
+              Escríbenos por WhatsApp
+            </a>
+          </div>
+
+          <p class="hero__small">
+            Te respondemos en menos de 24h · Sin compromiso
+          </p>
+
+          <div class="hero__phone">
+            <span>O llámanos al</span>
+            <a href="tel:+34642584490"><strong>642 58 44 90</strong></a>
+          </div>
+        </div>
+
+        <!-- Hero Form -->
+        <aside class="card hero__card" aria-label="Formulario de presupuesto">
+          <h2 class="card__title">Pide tu presupuesto ahora</h2>
+          <p class="card__subtitle">Cuéntanos tu idea y te contactamos.</p>
+
+          <form class="form" id="leadForm">
+            <label>
+              <span>Nombre</span>
+              <input name="name" type="text" placeholder="Tu nombre" required />
+            </label>
+
+            <label>
+              <span>Teléfono</span>
+              <input name="phone" type="tel" placeholder="642 58 44 90" required />
+            </label>
+
+            <label>
+              <span>Correo</span>
+              <input name="email" type="email" placeholder="montillasholding@gmail.com" required />
+            </label>
+
+            <label>
+              <span>Tipo de reforma</span>
+              <select name="service" required>
+                <option value="" selected disabled>Selecciona una opción</option>
+                <option>Reforma integral</option>
+                <option>Reforma de cocina</option>
+                <option>Reforma de baño</option>
+                <option>Oficinas / Locales</option>
+              </select>
+            </label>
+
+            <label>
+              <span>Mensaje</span>
+              <textarea name="message" rows="4" placeholder="Qué quieres reformar, zona, metros, etc."></textarea>
+            </label>
+
+            <label class="check">
+              <input type="checkbox" required />
+              <span>He leído y acepto la <a href="#" onclick="return false;">Política de Privacidad</a>.</span>
+            </label>
+
+            <button class="btn btn--primary btn--block" type="submit">Enviar</button>
+
+            <p class="form__note" id="formNote" role="status" aria-live="polite"></p>
+          </form>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section class="section section--alt" id="servicios">
+      <div class="container">
+        <div class="section__head">
+          <h2>Nuestros servicios</h2>
+          <p class="muted">Elige el tipo de reforma y te asesoramos sin compromiso.</p>
+        </div>
+
+        <div class="grid3">
+          <article class="card service">
+            <div class="service__icon" aria-hidden="true">🏠</div>
+            <h3>Reformas integrales</h3>
+            <p class="muted">Viviendas, pisos, chalets, oficinas o locales.</p>
+            <a class="btn btn--outline btn--sm" href="#contacto">Te Contactamos</a>
+          </article>
+
+          <article class="card service">
+            <div class="service__icon" aria-hidden="true">🍳</div>
+            <h3>Reformas de cocinas</h3>
+            <p class="muted">Distribución, mobiliario, iluminación y acabados.</p>
+            <a class="btn btn--outline btn--sm" href="#contacto">Te Contactamos</a>
+          </article>
+
+          <article class="card service">
+            <div class="service__icon" aria-hidden="true">🚿</div>
+            <h3>Reformas de baños</h3>
+            <p class="muted">Ducha/bañera, sanitarios, azulejos y fontanería.</p>
+            <a class="btn btn--outline btn--sm" href="#contacto">Te contactamos</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Works / Gallery -->
+    <section class="section" id="trabajos">
+      <div class="container">
+        <div class="section__head">
+          <h2>Descubre nuestros trabajos</h2>
+          <p class="muted">Resultados de calidad en reformas integrales, cocinas y baños.</p>
+        </div>
+
+        <div class="filters" role="tablist" aria-label="Filtros de trabajos">
+          <button class="chip" data-filter="integral" role="tab"><li><a href="Integrales.html">Integrales</a></li></button>
+          <button class="chip" data-filter="cocina" role="tab"><li><a href="cocinas.html">Cocinas</a></li></button>
+          <button class="chip" data-filter="bano" role="tab"><li><a href="banos.html">Baños</a></li></button>
+          <button class="chip" data-filter="Portafolio" role="tab"><li><a href="Portafolio.html">Portfolio Antes/Despues</a></li></button>
+        </div>
+
+        <div class="gallery" id="gallery">
+          <figure class="tile" data-type="integral">
+            <img src="https://images.unsplash.com/photo-1502005097973-6a7082348e28?auto=format&fit=crop&w=1200&q=70" alt="Reforma integral" />
+            <figcaption><li><a href="Integrales.html">Reformas Integrales</a></li></figcaption>
+          </figure>
+          <figure class="tile" data-type="cocina">
+            <img src="https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?auto=format&fit=crop&w=1200&q=70" alt="Reforma de cocina" />
+            <figcaption><li><a href="cocinas.html">Reforma de Cocinas</a></li></figcaption>
+          </figure>
+          <figure class="tile" data-type="bano">
+            <img src="https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1200&q=70" alt="Reforma de baño" />
+            <figcaption><li><a href="banos.html"> Reformas de Baños</a></li></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section section--alt" id="faq">
+      <div class="container">
+        <div class="section__head">
+          <h2>Preguntas frecuentes</h2>
+          <p class="muted">Resolvemos dudas típicas antes de empezar una reforma.</p>
+        </div>
+
+        <div class="accordion" id="accordion">
+          <details class="acc" open>
+            <summary>¿Qué servicios ofrecéis?</summary>
+            <div class="acc__content">
+              Reformas integrales, cocinas, baños, oficinas y locales. Coordinamos gremios y tiempos.
+            </div>
+          </details>
+
+          <details class="acc">
+            <summary>¿Cómo trabajáis plazos y presupuesto?</summary>
+            <div class="acc__content">
+              Definimos alcance, presupuesto y calendario por escrito. Control de obra para evitar desviaciones.
+            </div>
+          </details>
+
+          <details class="acc">
+            <summary>¿Cuánto cuesta una reforma?</summary>
+            <div class="acc__content">
+              Depende de metros, calidades y complejidad. Te damos un presupuesto personalizado tras revisar el espacio.
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA band -->
+    <section class="cta-band">
+      <div class="container cta-band__inner">
+        <div>
+          <h2>Transformamos tus espacios con reformas de calidad</h2>
+          <p class="muted">Pide tu presupuesto sin compromiso.</p>
+        </div>
+        <div class="cta-band__actions">
+          <a class="btn btn--primary" href="tel:+34642584490">Llamar</a>
+          <a class="btn btn--wa" href="https://wa.me/34642584490" target="_blank" rel="noreferrer">WhatsApp</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section" id="contacto">
+      <div class="container two-col">
+        <div>
+          <h2>Contáctanos</h2>
+          <p class="muted">Llámanos, escríbenos por WhatsApp o completa el formulario.</p>
+
+          <div class="contact-cards">
+            <a class="contact-card" href="tel:+34642584490">
+              <span class="contact-card__icon">📞</span>
+              <div>
+                <strong>Teléfono</strong>
+                <span>642 58 44 90</span>
+              </div>
+            </a>
+
+            <a class="contact-card" href="https://wa.me/34642584490" target="_blank" rel="noreferrer">
+              <span class="contact-card__icon">💬</span>
+              <div>
+                <strong>WhatsApp</strong>
+                <span>Escríbenos ahora</span>
+              </div>
+            </a>
+
+            <a class="contact-card" href="mailto:montillasholding@gmail.com">
+              <span class="contact-card__icon">✉️</span>
+              <div>
+                <strong>Email</strong>
+                <span>montillasholding@gmail.com</span>
+              </div>
+            </a>
+                    <iframe
+          class="map__iframe"
+          src="https://www.google.com/search?q=Camino+de+leganes+30+28021+madrid&sca_esv=cbcc352c89b9e229&sxsrf=ANbL-n5c_NSzzk76RBEaJcWizUqShN1Xgw%3A1768413467659&source=hp&ei=G9lnae7aJefqi-gPotrE0A0&iflsig=AFdpzrgAAAAAaWfnK-DheQ_xtLJL1T8sezTkEkyPg99s&ved=0ahUKEwiu1LbEzYuSAxVn9QIHHSItEdoQ4dUDCCA&uact=5&oq=Camino+de+leganes+30+28021+madrid&gs_lp=Egdnd3Mtd2l6IiFDYW1pbm8gZGUgbGVnYW5lcyAzMCAyODAyMSBtYWRyaWQyAhAmMggQABiABBiiBDIFEAAY7wUyCBAAGIAEGKIEMgUQABjvBTIFEAAY7wVIimBQAFiLX3ANeACQAQGYAYYCoAGVKKoBBjguMzMuM7gBA8gBAPgBAZgCOKAClSjCAgoQIxiABBgnGIoFwgIEECMYJ8ICCBAAGIAEGLEDwgILEC4YgAQYsQMYgwHCAhEQLhiABBixAxjRAxiDARjHAcICCxAAGIAEGLEDGIMBwgIOEC4YgAQYsQMYgwEYigXCAgUQABiABMICBBAAGAPCAg4QABiABBixAxiDARiKBcICERAAGIAEGLEDGIMBGIoFGI0GwgIIEC4YgAQYsQPCAgUQLhiABMICDhAuGIAEGMcBGI4FGK8BwgILEAAYgAQYsQMYyQPCAgYQABgWGB7CAgUQIRigAcICBBAhGBWYAwCSBwcxOS4zNS4yoAeDlgKyBwY2LjM1LjK4B-InwgcJMy4zMC4yMi4xyAerAYAIAA&sclient=gws-wiz#smwie=1"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        title="Ubicación de la empresa">
+        </iframe>
+          </div>
+        </div>
+
+        <aside class="card">
+          <h3 class="card__title">Formulario de contacto</h3>
+          <p class="card__subtitle">Te respondemos en menos de 24h.</p>
+
+          <form class="form" id="contactForm">
+            <label>
+              <span>Nombre</span>
+              <input name="name" type="text" required />
+            </label>
+
+            <label>
+              <span>Teléfono</span>
+              <input name="phone" type="tel" required />
+            </label>
+
+            <label>
+              <span>Correo electrónico</span>
+              <input name="email" type="email" required />
+            </label>
+
+            <label>
+              <span>Asunto</span>
+              <input name="subject" type="text" required />
+            </label>
+
+            <label>
+              <span>Mensaje</span>
+              <textarea name="message" rows="5" required></textarea>
+            </label>
+
+            <label class="check">
+              <input type="checkbox" required />
+              <span>He leído y acepto la Política de Privacidad.</span>
+            </label>
+
+            <button class="btn btn--primary btn--block" type="submit">Enviar</button>
+            <p class="form__note" id="contactNote" role="status" aria-live="polite"></p>
+          </form>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <img class="footer__logo" src="Assets/LOGO-SECUNDARIO-3.png" alt="Logo de la empresa" />
+        <div>
+          <strong>Montillas Holding</strong>
+          <p class="muted">Reformas integrales · Cocinas · Baños</p>
+        </div>
+      </div>
+
+      <div class="footer__links">
+        <a href="#" onclick="return false;">Política de Cookies</a>
+        <a href="#" onclick="return false;">Política de Privacidad</a>
+        <a href="#" onclick="return false;">Aviso Legal</a>
+      </div>
+
+      <p class="footer__copy muted">© <span id="year"></span> Montillas Holding. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp -->
+  <a class="fab" href="https://wa.me/34642584490" target="_blank" rel="noreferrer" aria-label="Abrir WhatsApp">
+    💬
+  </a>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-label="Vista ampliada">
+    <button class="lightbox__close" id="lightboxClose" aria-label="Cerrar">✕</button>
+    <img id="lightboxImg" alt="" />
+    <p class="lightbox__cap" id="lightboxCap"></p>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
