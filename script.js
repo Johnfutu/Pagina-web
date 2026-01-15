@@ -95,8 +95,50 @@ function wireForm(formId, noteId){
   });
 }
 
-wireForm("#leadForm", "#formNote");
-wireForm("#contactForm", "#contactNote");
+async function wireForm(formId, noteId, source) {
+  const form = document.querySelector(formId);
+  const note = document.querySelector(noteId);
+  if (!form || !note) return;
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    note.textContent = "Enviando...";
+
+    const fd = new FormData(form);
+
+    // Honeypot (campo oculto opcional si lo agregas)
+    // fd.append("website", "");
+
+    const payload = {
+      source,
+      name: (fd.get("name") || "").toString().trim(),
+      phone: (fd.get("phone") || "").toString().trim(),
+      email: (fd.get("email") || "").toString().trim(),
+      service: (fd.get("service") || "").toString().trim(),
+      subject: (fd.get("subject") || "").toString().trim(),
+      message: (fd.get("message") || "").toString().trim(),
+    };
+
+    try {
+      const res = await fetch("api/lead_create.php", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      const data = await res.json().catch(() => null);
+      if (!res.ok || !data) throw new Error(data?.message || "Error");
+
+      note.textContent = data.message || "¡Enviado!";
+      form.reset();
+    } catch (err) {
+      note.textContent = "No se pudo enviar. Inténtalo de nuevo o escríbenos por WhatsApp.";
+    }
+  });
+}
+
+wireForm("#leadForm", "#formNote", "hero");
+wireForm("#contactForm", "#contactNote", "contact");
 
 // FAQ behavior: allow one open at a time (like accordion)
 const details = $$(".acc");
