@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Empresa de reformas | Presupuesto gratis</title>
   <meta name="description" content="Reformas sin sorpresas: presupuesto y plazos por escrito. Pide tu presupuesto gratis." />
+  <link rel="icon" href="Assets/favicon.ico" type="image/x-icon">
 
   <!-- Google Font (CAMBIA "Poppins" por vuestra fuente si es otra) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -121,7 +122,7 @@
               <span>He leído y acepto la <a href="#" onclick="return false;">Política de Privacidad</a>.</span>
             </label>
 
-            <button class="btn btn--primary btn--block" type="submit">Enviar</button>
+            <button class="btn btn--primary btn--block" type="submit">Quiero mi Presupuesto</button>
 
             <p class="form__note" id="formNote" role="status" aria-live="polite"></p>
           </form>
@@ -337,9 +338,9 @@
       </div>
 
       <div class="footer__links">
-        <a href="#" onclick="return false;">Política de Cookies</a>
-        <a href="#" onclick="return false;">Política de Privacidad</a>
-        <a href="#" onclick="return false;">Aviso Legal</a>
+        <a href="politicascookies.html" onclick="return true;">Política de Cookies</a>
+        <a href="politicasprivacidad.html" onclick="return true;">Política de Privacidad</a>
+        <a href="avisolegal.html" onclick="return true;">Aviso Legal</a>
       </div>
 
       <p class="footer__copy muted">© <span id="year"></span> Montillas Holding. Todos los derechos reservados.</p>
@@ -357,7 +358,63 @@
     <img id="lightboxImg" alt="" />
     <p class="lightbox__cap" id="lightboxCap"></p>
   </div>
+  <!-- Cookie consent (RGPD + LSSI-CE) -->
+<div id="cookieOverlay" role="dialog" aria-modal="true" aria-labelledby="cookieTitle" hidden>
+  <div class="cookieCard">
+    <div class="cookieHeader">
+      <h2 id="cookieTitle" class="cookieTitle" tabindex="-1">Preferencias de cookies</h2>
+    </div>
 
-  <script src="main.js"></script>
+    <p class="cookieText">
+      Usamos cookies necesarias para el funcionamiento básico de la web. Además, puedes permitir cookies de
+      analítica y marketing (de terceros) si las incorporamos en el futuro. Puedes aceptar, rechazar o configurar.
+      Consulta la <a href="./politica-de-cookies.html">Política de cookies</a>.
+    </p>
+
+    <div class="cookieActions">
+      <button id="btnAccept" class="cookieBtn cookieBtnPrimary" type="button">Aceptar todas</button>
+      <button id="btnReject" class="cookieBtn cookieBtnSecondary" type="button">Rechazar</button>
+      <button id="btnConfig" class="cookieBtn cookieBtnGhost" type="button" aria-expanded="false" aria-controls="cookiePanel">Configurar</button>
+    </div>
+
+    <div id="cookiePanel" class="cookiePanel" hidden>
+      <label class="cookieRow">
+        <span><strong>Necesarias</strong><small>Imprescindibles para que la web funcione.</small></span>
+        <input type="checkbox" checked disabled>
+      </label>
+
+      <label class="cookieRow">
+        <span><strong>Analítica</strong><small>Medición del uso para mejorar la web.</small></span>
+        <input id="ckAnalytics" type="checkbox">
+      </label>
+
+      <label class="cookieRow">
+        <span><strong>Marketing</strong><small>Publicidad y medición de campañas.</small></span>
+        <input id="ckMarketing" type="checkbox">
+      </label>
+
+      <div class="cookieActions">
+        <button id="btnSave" class="cookieBtn cookieBtnPrimary" type="button">Guardar configuración</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button id="cookieManage" type="button" hidden>Cookies</button>
+
+<!-- Carga CSS/JS -->
+<link rel="stylesheet" href="./assets/cookies.css">
+<script src="./assets/cookies.js" defer></script>
+<script type="text/plain" data-cookiecategory="analytics"
+        data-src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+
+<script type="text/plain" data-cookiecategory="analytics">
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX', { anonymize_ip: true });
+</script>
+
+  <script src="script.js"></script>
 </body>
 </html>

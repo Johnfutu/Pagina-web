@@ -199,3 +199,125 @@ initBeforeAfter();
     });
   });
 })();
+
+(() => {
+  const STORAGE_KEY = "cookie_consent_v1";
+
+  const banner = document.getElementById("cookie-banner");
+  const panel  = document.getElementById("cookie-panel");
+  const manage = document.getElementById("cookie-manage");
+
+  const btnAccept = document.getElementById("cookie-accept");
+  const btnReject = document.getElementById("cookie-reject");
+  const btnConfig = document.getElementById("cookie-config");
+  const btnSave   = document.getElementById("cookie-save");
+
+  const chkAnalytics = document.getElementById("consent-analytics");
+  const chkMarketing = document.getElementById("consent-marketing");
+
+  function nowISO(){ return new Date().toISOString(); }
+
+  function loadConsent() {
+    try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || "null"); }
+    catch { return null; }
+  }
+
+  function saveConsent(consent) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({
+      ...consent,
+      timestamp: nowISO(),
+      version: 1
+    }));
+  }
+
+  // Public helper: call this to check status before loading third-party scripts
+  window.getCookieConsent = function() {
+    const c = loadConsent();
+    return c ? { analytics: !!c.analytics, marketing: !!c.marketing } : { analytics:false, marketing:false };
+  };
+
+  // OPTIONAL: expose a function to revoke
+  window.resetCookieConsent = function() {
+    localStorage.removeItem(STORAGE_KEY);
+    // Recommended: also delete non-necessary cookies already set (best-effort)
+    // Note: deleting 3rd-party cookies may not be possible from JS if different domain.
+    location.reload();
+  };
+
+  function showBanner() {
+    banner.hidden = false;
+    manage.hidden = false;
+  }
+
+  function hideBanner() {
+    banner.hidden = true;
+    manage.hidden = false;
+  }
+
+  function setPanel(open) {
+    panel.hidden = !open;
+    btnConfig.setAttribute("aria-expanded", open ? "true" : "false");
+  }
+
+  // ---- Blocking loader pattern ----
+  // Place scripts that set cookies as <script type="text/plain" data-cookiecategory="analytics"> ... </script>
+  // and they will run only after consent.
+  function runDeferredScripts() {
+    const consent = window.getCookieConsent();
+    const nodes = document.querySelectorAll('script[type="text/plain"][data-cookiecategory]');
+    nodes.forEach(node => {
+      const cat = node.getAttribute("data-cookiecategory");
+      const allowed =
+        (cat === "analytics" && consent.analytics) ||
+        (cat === "marketing" && consent.marketing);
+
+      if (!allowed) return;
+
+      const s = document.createElement("script");
+      // if it's an external script:
+      if (node.dataset.src) {
+        s.src = node.dataset.src;
+        s.async = true;
+      } else {
+        s.text = node.textContent;
+      }
+      // copy attributes if needed:
+      document.head.appendChild(s);
+      node.parentNode.removeChild(node);
+    });
+  }
+
+  function applyConsentAndLoad(consent) {
+    saveConsent(consent);
+    hideBanner();
+    runDeferredScripts();
+  }
+
+  // Init
+  const existing = loadConsent();
+  if (!existing) {
+    showBanner();
+  } else {
+    manage.hidden = false;
+    runDeferredScripts();
+  }
+
+  // UI events
+  manage?.addEventListener("click", () => {
+    showBanner();
+    setPanel(true);
+    const c = window.getCookieConsent();
+    chkAnalytics.checked = c.analytics;
+    chkMarketing.checked = c.marketing;
+  });
+
+  btnAccept?.addEventListener("click", () => applyConsentAndLoad({ analytics:true, marketing:true }));
+  btnReject?.addEventListener("click", () => applyConsentAndLoad({ analytics:false, marketing:false }));
+
+  btnConfig?.addEventListener("click", () => setPanel(panel.hidden)); // toggle
+
+  btnSave?.addEventListener("click", () => applyConsentAndLoad({
+    analytics: chkAnalytics.checked,
+    marketing: chkMarketing.checked
+  }));
+})();

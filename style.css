@@ -1,6 +1,6 @@
 :root{
   /* Paleta */
-  --black:#beb65e;
+  --beige:#beb65e;
   --white:#ffffff;
 
   /* Beige (ajústalo si tenéis un beige exacto) */
@@ -462,6 +462,8 @@ input:focus, select:focus, textarea:focus{
   font-size:18px;
 }
 
+
+
 /* Responsive */
 @media (max-width: 960px){
   .hero__inner{ grid-template-columns: 1fr; }
@@ -663,6 +665,8 @@ input:focus, select:focus, textarea:focus{
   border-radius:16px;
   background: rgba(255,255,255,.03);
 }
+
+
 
 /* Responsive */
 @media (max-width: 960px){
