@@ -23,7 +23,7 @@
     ul{ padding-left:18px; }
     .muted{ color:#555; }
     .box{
-      background:#fafafa;
+      background:#1c1c1c;
       border:1px solid #eee;
       padding:16px;
       border-radius:14px;
@@ -37,9 +37,10 @@
       padding:10px 14px;
       border-radius:12px;
       text-decoration:none;
-      background:#fff;
+      background:#222222;
     }
   </style>
+    <link rel="stylesheet" href="style.css" />
 
   <!-- ✅ Cookies CSS (mejor en head) -->
   <link rel="stylesheet" href="Assets/cookies.css">
@@ -155,6 +156,31 @@
 
     <p><a href="index.html" class="btn">Volver a inicio</a></p>
   </main>
+    <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <img class="footer__logo" src="Assets/LOGO-SECUNDARIO-3.png" alt="Logo de la empresa" />
+        <div>
+          <strong>Montillas Holding</strong>
+          <p class="muted">Reformas integrales · Cocinas · Baños</p>
+        </div>
+      </div>
+
+      <div class="footer__links">
+        <a href="politicascookies.html" onclick="return true;">Política de Cookies</a>
+        <a href="politicasprivacidad.html" onclick="return true;">Política de Privacidad</a>
+        <a href="avisolegal.html" onclick="return true;">Aviso Legal</a>
+      </div>
+
+      <p class="footer__copy muted">© <span id="year"></span> Montillas Holding. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp -->
+  <a class="fab" href="https://wa.me/34642584490" target="_blank" rel="noreferrer" aria-label="Abrir WhatsApp">
+    💬
+  </a>
 
   <!-- ✅ IMPORTANTE: aquí debe ir el HTML del banner (cookieOverlay...) -->
   <!-- Pega el bloque del banner tal cual lo tenías -->
