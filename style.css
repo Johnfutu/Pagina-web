@@ -462,6 +462,128 @@ input:focus, select:focus, textarea:focus{
   font-size:18px;
 }
 
+/* ====== Sobre nosotros ====== */
+.about{
+  padding: 64px 0;
+}
+
+.about__container{
+  width: min(1100px, 100%);
+  margin: 0 auto;
+  padding: 0 16px;
+
+  display: grid;
+  grid-template-columns: 1.15fr .85fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.about__eyebrow{
+  margin: 0 0 10px;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  font-size: 12px;
+  color: #0b0b0b;
+}
+
+.about__title{
+  margin: 0 0 14px;
+  font-size: clamp(22px, 2.2vw, 32px);
+  line-height: 1.15;
+}
+
+.about__text{
+  margin: 0 0 12px;
+  color: #ecebeb;
+  line-height: 1.65;
+}
+
+.about__bullets{
+  margin: 14px 0 0;
+  padding-left: 18px;
+  color: #efeded;
+}
+.about__bullets li{ margin: 8px 0; }
+
+.about__cta{
+  margin-top: 18px;
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.about__btn{
+  display: inline-block;
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: #111;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.about__link{
+  text-decoration: underline;
+  color: inherit;
+  font-weight: 600;
+}
+
+/* Card derecha */
+.about__card{
+  border: 1px solid #eee;
+  background: #fafafa;
+  border-radius: 16px;
+  padding: 16px;
+}
+
+.about__cardTitle{
+  margin: 0 0 12px;
+  font-size: 16px;
+}
+
+.about__grid{
+  display: grid;
+  gap: 12px;
+}
+
+.about__item{
+  display: grid;
+  grid-template-columns: 32px 1fr;
+  gap: 10px;
+  align-items: start;
+
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 14px;
+  padding: 12px;
+}
+
+.about__icon{
+  font-size: 18px;
+  line-height: 1;
+}
+
+.about__itemTitle{
+  margin: 0;
+  font-weight: 700;
+}
+
+.about__itemText{
+  margin: 4px 0 0;
+  color: #444;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+/* Responsive */
+@media (max-width: 900px){
+  .about__container{
+    grid-template-columns: 1fr;
+  }
+}
+
 
 
 /* Responsive */
