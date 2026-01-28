@@ -39,36 +39,6 @@ chips.forEach(chip => {
   });
 });
 
-// Lightbox
-const lightbox = $("#lightbox");
-const lightboxImg = $("#lightboxImg");
-const lightboxCap = $("#lightboxCap");
-const lightboxClose = $("#lightboxClose");
-
-tiles.forEach(tile => {
-  tile.addEventListener("click", () => {
-    const img = $("img", tile);
-    lightboxImg.src = img.src;
-    lightboxImg.alt = img.alt || "";
-    lightboxCap.textContent = tile.querySelector("figcaption")?.textContent || "";
-    lightbox.classList.add("is-open");
-    lightbox.setAttribute("aria-hidden", "false");
-    document.body.style.overflow = "hidden";
-  });
-});
-
-function closeLightbox(){
-  lightbox.classList.remove("is-open");
-  lightbox.setAttribute("aria-hidden", "true");
-  document.body.style.overflow = "";
-}
-lightboxClose.addEventListener("click", closeLightbox);
-lightbox.addEventListener("click", (e) => {
-  if (e.target === lightbox) closeLightbox();
-});
-document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape" && lightbox.classList.contains("is-open")) closeLightbox();
-});
 
 // Fake form submit (frontend-only)
 function wireForm(formId, noteId){
@@ -109,6 +79,7 @@ async function wireForm(formId, noteId, source) {
     // Honeypot (campo oculto opcional si lo agregas)
     // fd.append("website", "");
 
+    
     const payload = {
       source,
       name: (fd.get("name") || "").toString().trim(),
@@ -120,20 +91,25 @@ async function wireForm(formId, noteId, source) {
     };
 
     try {
-      const res = await fetch("api/lead_create.php", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
+  const res = await fetch("/api/lead_create.php", {   // nota el "/" al inicio
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  });
 
-      const data = await res.json().catch(() => null);
-      if (!res.ok || !data) throw new Error(data?.message || "Error");
+  const text = await res.text();              // leer SIEMPRE el body
+  let data = null;
+  try { data = JSON.parse(text); } catch {}
 
-      note.textContent = data.message || "¡Enviado!";
-      form.reset();
-    } catch (err) {
-      note.textContent = "No se pudo enviar. Inténtalo de nuevo o escríbenos por WhatsApp.";
-    }
+  if (!res.ok) {
+    throw new Error(data?.message || text || `HTTP ${res.status}`);
+  }
+
+  note.textContent = data?.message || "¡Enviado!";
+  form.reset();
+} catch (err) {
+  note.textContent = err.message;             // AQUÍ verás el motivo real
+}
   });
 }
 
@@ -244,10 +220,14 @@ initBeforeAfter();
     location.reload();
   };
 
-  function showBanner() {
-    banner.hidden = false;
-    manage.hidden = false;
-  }
+  
+function showBanner() {
+  const banner = document.querySelector("#cookieBanner"); // o el selector que uses
+  if (!banner) return;
+  banner.hidden = false; // o true
+}
+  const el = document.querySelector('#tuElemento');
+if (el) el.hidden = true;
 
   function hideBanner() {
     banner.hidden = true;
@@ -320,4 +300,39 @@ initBeforeAfter();
     analytics: chkAnalytics.checked,
     marketing: chkMarketing.checked
   }));
+})();
+
+// Lightbox simple para ampliar imágenes
+(() => {
+  const lb = document.getElementById("lightbox");
+  if (!lb) return;
+
+  const img = lb.querySelector(".lightbox__img");
+  const closeBtn = lb.querySelector(".lightbox__close");
+
+  function open(src, alt) {
+    img.src = src;
+    img.alt = alt || "";
+    lb.classList.add("is-open");
+    lb.setAttribute("aria-hidden", "false");
+  }
+
+  function close() {
+    lb.classList.remove("is-open");
+    lb.setAttribute("aria-hidden", "true");
+    img.src = "";
+    img.alt = "";
+  }
+
+  // Click en imagen (solo las que tengan .zoomable)
+  document.addEventListener("click", (e) => {
+    const target = e.target.closest(".before-after img");
+    if (!target) return;
+    open(target.src, target.alt);
+  });
+
+  // Cerrar
+  closeBtn.addEventListener("click", close);
+  lb.addEventListener("click", (e) => { if (e.target === lb) close(); });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape") close(); });
 })();

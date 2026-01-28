@@ -84,8 +84,9 @@ try {
     ':ua' => $ua !== '' ? $ua : null,
   ]);
 
-  // Email (simple). En shared hosting suele funcionar mail()
+    // Email (simple). En shared hosting puede fallar si SPF/DKIM no están OK.
   $leadId = $pdo->lastInsertId();
+
   $mailSubject = "Nuevo lead (#$leadId) - " . ($source === 'hero' ? 'Hero' : 'Contacto');
   $mailBody =
     "Nuevo lead recibido\n\n" .
@@ -99,13 +100,25 @@ try {
     "Mensaje:\n" . ($message ?: '-') . "\n\n" .
     "IP: " . ($ip ?: '-') . "\n";
 
-  $headers = "From: no-reply@" . ($_SERVER['SERVER_NAME'] ?? 'localhost') . "\r\n" .
-             "Reply-To: $email\r\n" .
-             "Content-Type: text/plain; charset=UTF-8\r\n";
+  $from = 'contacto@montillasholding.com';
 
-  @mail(LEADS_TO_EMAIL, $mailSubject, $mailBody, $headers);
+  $headers =
+    "From: Montillas Holding <{$from}>\r\n" .
+    "Reply-To: {$email}\r\n" .
+    "Content-Type: text/plain; charset=UTF-8\r\n";
 
-  respond(200, ['ok'=>true, 'message'=>'¡Gracias! Hemos recibido tu solicitud.']);
+  // Envelope sender (-f) ayuda a la entregabilidad
+  $sent = mail(LEADS_TO_EMAIL, $mailSubject, $mailBody, $headers, "-f {$from}");
+
+  if (!$sent) {
+    $lastError = error_get_last();
+    error_log("MAIL() FAILED to=" . LEADS_TO_EMAIL . " err=" . json_encode($lastError));
+    respond(500, ['ok'=>false, 'message'=>'No se pudo enviar el email.']);
+  }
+    respond(200, ['ok'=>true, 'message'=>'¡Gracias! Hemos recibido tu solicitud.']);
+
 } catch (Throwable $e) {
-  respond(500, ['ok'=>false, 'message'=>'Error interno. Inténtalo más tarde.']);
+  $msg = date('c') . " | " . $e->getMessage() . " | " . $e->getFile() . ":" . $e->getLine() . "\n";
+  file_put_contents(__DIR__ . "/debug_leads.log", $msg, FILE_APPEND);
+  respond(500, ['ok'=>false, 'message'=>'Error interno (revisar log).']);
 }
